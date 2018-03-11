@@ -1,0 +1,14 @@
+version: '2'
+services:
+    ifa-app:
+        image: ifa
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://ifa-mysql:3306/ifa?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8189:8189
+    ifa-mysql:
+        extends:
+            file: mysql.yml
+            service: ifa-mysql
